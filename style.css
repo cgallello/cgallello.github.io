@@ -1,0 +1,165 @@
+body{
+	margin:0 auto;
+	font-family:Avenir;
+}
+
+h1{
+	font-size:30px;
+}
+
+h2{
+	font-size:24px;
+}
+
+p{
+	font-size:13px;
+}
+
+a{
+	text-decoration:none;
+}
+
+#topbar{
+	height:150px;
+	display:flex;
+	flex-direction:row;
+	align-items:center;
+	width:100%;
+}
+
+#topbar_inner{
+	max-width:900px;
+	margin:0 auto;
+	display:flex;
+	flex:1 0 auto;
+}
+
+#topbar header{
+	flex:1 0 auto;
+}
+
+#topbar_links{
+    display: flex;
+    align-items: center;
+}
+
+#topbar_links a{
+	font-size:16px;
+	margin-left:20px;
+	vertical-align: middle;
+	display:flex;
+	align-items:center;
+}
+
+
+
+#main{
+	max-width:900px;
+	margin:0 auto;
+}
+
+.work_container{
+	margin:30px 0 40px 0;
+	text-align: center;
+	display:inline-block;
+}
+
+.work_container.art{
+	width:calc(33% - 30px);
+	margin-right:30px;
+}
+
+.work_container.product{
+	width:100%;
+	text-align: left;
+	margin-bottom:60px;
+}
+
+.thumbnail{
+	box-shadow: 0 15px 30px 0 rgba(0,0,0,0.23);
+	/*width:320px;*/
+	/*height:320px;*/
+	width:100%;
+	padding-bottom:100%;
+	margin-bottom:30px;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	overflow:hidden;
+	position:relative;
+	background-color:#585858;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	color:white;
+}
+
+.thumbnail img.art{
+	width:100%;
+	position:absolute;
+	height:100%;
+	left:0; top:0;
+	object-fit:cover;
+}
+
+.thumbnail img.fullscreen{
+	position:absolute;
+	right:10px;
+	bottom:15px;
+	cursor:pointer;
+	width:15px;
+}
+
+.thumbnail img.mute{
+	position:absolute;
+	right:40px;
+	bottom:15px;
+	cursor:pointer;
+	width:15px;
+}
+
+.mute_off{
+	display:none;
+}
+
+.thumbnail video{
+	display:none;
+	height:100%;
+	width:100%;
+	object-fit:cover;
+	position:absolute;
+	left:0; top:0;
+}
+
+video:-webkit-full-screen {
+    object-fit: contain;
+}
+
+
+
+.work_title{
+	font-size:18px;
+	margin-bottom:10px;
+}
+
+.work_subtitle{
+	font-size:11px;
+	color:#919191;
+}
+
+
+
+
+
+.profile{
+	background-image:url('profile.jpg');
+	background-size:cover;
+	width:100px;
+	height:100px;
+}
+.profile:hover{
+	background-image:url('profile-what.jpg');
+}
+
+
+

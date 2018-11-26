@@ -1,0 +1,174 @@
+<html>
+<head>
+	<title>Chris Gallello</title>
+<link rel="stylesheet" type="text/css" href="style.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$('.thumbnail').hover(function(){
+			$(this).find('img.art').hide();
+			var video = $(this).find('video');
+			video.fadeIn();
+			if(video.attr("src") == undefined){
+				video.attr("src", video.attr("data-src"));
+			} else {
+				video.get(0).play();
+			}
+		}, function(){
+			$(this).find('img.art').show();
+			var video = $(this).find('video');
+			video.get(0).pause();
+			video.fadeOut();
+		});
+
+		$(".fullscreen").on("click", function(){
+			var video = $(this).siblings('video');
+			video.get(0).webkitRequestFullscreen();
+		});
+
+		$("img.mute_off").on("click", function (e) {
+			$('.mute_on').each(function(){
+				$(this).show();
+			});
+			$('.mute_off').each(function(){
+				$(this).hide();
+			});
+
+			$('video').each(function(){
+				$(this).prop('muted', true);
+			});
+		});
+		$("img.mute_on").on("click", function (e) {
+
+			$('.mute_on').each(function(){
+				$(this).hide();
+			});
+			$('.mute_off').each(function(){
+				$(this).show();
+			});
+			
+			$('video').each(function(){
+				$(this).prop('muted', false);
+			});
+		});
+	});
+
+</script>
+</head>
+<body>
+<div id="topbar">
+	<div id="topbar_inner">
+		<header><h1>Chris Gallello 🐵</h1></header>
+		<div id="topbar_links">
+			<a href="index.html">Home</a>
+		</div>
+	</div>
+</div>
+<!-- <a href="profile.jpg"><div class="profile"></div></a> -->
+
+<div id="main">
+	<h2>Art work</h2>
+
+	<div class="work_container art">
+		<div class="thumbnail">
+			<img class="art" src="art/rose.jpg" />
+			<video data-src="art/rose.mp4" autoplay playsinline muted loop></video>
+			<img class="fullscreen" src="images/Fullscreen.svg" />
+			<!-- Loading... -->
+		</div>
+		<div class="work_title">Le Tombeau des Lutteurs</div>
+		<div class="work_subtitle">TILTBRUSH, BLENDER</div>
+	</div>
+
+	<div class="work_container art">
+		<div class="thumbnail">
+			<img class="art" src="art/LeBaiser.jpg" />
+			<video data-src="art/LeBaiser_c.mp4" autoplay playsinline muted loop></video>
+			<img class="fullscreen" src="images/Fullscreen.svg" />
+			<!-- Loading... -->
+		</div>
+		<div class="work_title">Le Baiser</div>
+		<div class="work_subtitle">TILTBRUSH, BLENDER</div>
+	</div>
+
+	<div class="work_container art">
+		<div class="thumbnail">
+			<img class="art" src="art/magrittemashup.jpg" />
+			<video data-src="art/MagritteMashup_c.mp4" autoplay playsinline muted loop></video>
+			<img class="fullscreen" src="images/Fullscreen.svg" />
+			<!-- Loading... -->
+		</div>
+		<div class="work_title">Magritte Mashup</div>
+		<div class="work_subtitle">TILTBRUSH, BLENDER</div>
+	</div>
+
+	<div class="work_container art">
+		<div class="thumbnail">
+			<img class="art" src="art/lemondedesimages.jpg" />
+			<video data-src="art/LeMondeDesImages_c.mp4" autoplay playsinline muted loop></video>
+			<img class="fullscreen" src="images/Fullscreen.svg" />
+		</div>
+		<div class="work_title">Le Monde des Images</div>
+		<div class="work_subtitle">TILTBRUSH, BLENDER</div>
+	</div>
+
+	<div class="work_container art">
+		<div class="thumbnail">
+			<img class="art" src="art/jazzwave.jpg" />
+			<video data-src="art/Jazzwave_c.mp4" autoplay playsinline muted loop></video>
+			<img class="fullscreen" src="images/Fullscreen.svg" />
+			<img class="mute mute_on" src="images/Muted.svg" />
+			<img class="mute mute_off" src="images/Unmuted.svg" />
+		</div>
+		<div class="work_title">Jazzwave</div>
+		<div class="work_subtitle">TILTBRUSH</div>
+	</div>
+
+	<div class="work_container art">
+		<div class="thumbnail">
+			<img class="art" src="art/santacruz.jpg" />
+			<video data-src="art/santacruz.mp4" autoplay playsinline muted loop></video>
+			<img class="fullscreen" src="images/Fullscreen.svg" />
+		</div>
+		<div class="work_title">Santa Cruz</div>
+		<div class="work_subtitle">TILTBRUSH + BLENDER</div>
+	</div>
+
+	<div class="work_container art">
+		<div class="thumbnail">
+			<img class="art" src="art/deathstar.jpg" />
+			<video data-src="art/deathstar.mp4" autoplay playsinline muted loop></video>
+			<img class="fullscreen" src="images/Fullscreen.svg" />
+			<img class="mute mute_on" src="images/Muted.svg" />
+			<img class="mute mute_off" src="images/Unmuted.svg" />
+		</div>
+		<div class="work_title">Death Star II Tunnel run</div>
+		<div class="work_subtitle">BLENDER</div>
+	</div>
+
+	<div class="work_container art">
+		<div class="thumbnail">
+			<img class="art" src="art/kyber.jpg" />
+			<video data-src="art/heartsofkyber_c.mp4" autoplay playsinline muted loop></video>
+			<img class="fullscreen" src="images/Fullscreen.svg" />
+			<img class="mute mute_on" src="images/Muted.svg" />
+			<img class="mute mute_off" src="images/Unmuted.svg" />
+		</div>
+		<div class="work_title">Hearts of Kyber</div>
+		<div class="work_subtitle">BLENDER</div>
+	</div>
+
+	<div class="work_container art">
+		<div class="thumbnail">
+			<img class="art" src="art/yoda.jpg" />
+			<video data-src="art/yoda.mp4" autoplay playsinline muted loop></video>
+			<img class="fullscreen" src="images/Fullscreen.svg" />
+			<img class="mute mute_on" src="images/Muted.svg" />
+			<img class="mute mute_off" src="images/Unmuted.svg" />
+		</div>
+		<div class="work_title">Luminous Beings Are We</div>
+		<div class="work_subtitle">MEDIUM</div>
+	</div>
+</div>
+
+</html>

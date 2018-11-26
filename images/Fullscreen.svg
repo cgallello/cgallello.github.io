@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch Beta 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>Fullscreen</title>
+    <desc>Created with Sketch Beta.</desc>
+    <g id="Fullscreen" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M1.42855034,9.42855034 L3.58563881,7.27146187 L4.73563271,8.42145576 L2.57854424,10.5785442 L4,12 L0,12 L2.4492936e-16,8 L1.42855034,9.42855034 Z M2.57144966,1.42855034 L4.72853813,3.58563881 L3.57854424,4.73563271 L1.42145576,2.57854424 L-8.8817842e-16,4 L0,-4.34309182e-16 L4,5.45408258e-16 L2.57144966,1.42855034 Z M10.5714497,2.57144966 L8.41436119,4.72853813 L7.26436729,3.57854424 L9.42145576,1.42145576 L8,-8.8817842e-16 L12,-3.94430453e-31 L12,4 L10.5714497,2.57144966 Z M9.43209763,10.5679024 L7.27500916,8.4108139 L8.41790848,7.26791458 L10.5749969,9.42500305 L12,8 L12,12 L8,12 L9.43209763,10.5679024 Z" id="Combined-Shape" fill="#FAFAFA"></path>
+    </g>
+</svg>
