@@ -53,13 +53,29 @@
 			});
 
 			$(".tab").on('click', function(){
-				if($(this).attr("id") == "artwork_tab"){
+				if($(this).attr("id") == "workwork_tab"){
 					if($('body').scrollTop() > 600){
 						$('body').scrollTop($('#top_body')[0].scrollHeight + 100);
 					}
 					$("#vrwork_tab").removeClass('active');
 					$("#talkwork_tab").removeClass('active');
+					$("#artwork_tab").removeClass('active');
+					$("#workwork_tab").addClass('active');
+					$("#vrwork").fadeOut(); 
+					$("#talkwork").fadeOut(); 
+					$("#artwork").fadeOut(); 
+					$("#workwork").fadeIn(); 
+					
+				}
+				if($(this).attr("id") == "artwork_tab"){
+					if($('body').scrollTop() > 600){
+						$('body').scrollTop($('#top_body')[0].scrollHeight + 100);
+					}
+					$("#workwork_tab").removeClass('active');
+					$("#vrwork_tab").removeClass('active');
+					$("#talkwork_tab").removeClass('active');
 					$("#artwork_tab").addClass('active');
+					$("#workwork").fadeOut(); 
 					$("#vrwork").fadeOut(); 
 					$("#talkwork").fadeOut(); 
 					$("#artwork").fadeIn(); 
@@ -69,9 +85,11 @@
 					if($('body').scrollTop() > 600){
 						$('body').scrollTop($('#top_body')[0].scrollHeight + 100);
 					}
+					$("#workwork_tab").removeClass('active');
 					$("#artwork_tab").removeClass('active');
 					$("#talkwork_tab").removeClass('active');
 					$("#vrwork_tab").addClass('active');
+					$("#workwork").fadeOut(); 
 					$("#artwork").fadeOut(); 
 					$("#talkwork").fadeOut(); 
 					$("#vrwork").fadeIn(); 
@@ -80,9 +98,11 @@
 					if($('body').scrollTop() > 600){
 						$('body').scrollTop($('#top_body')[0].scrollHeight + 100);
 					}
+					$("#workwork_tab").removeClass('active');
 					$("#artwork_tab").removeClass('active');
 					$("#vrwork_tab").removeClass('active');
 					$("#talkwork_tab").addClass('active');
+					$("#workwork").fadeOut(); 
 					$("#vrwork").fadeOut(); 
 					$("#artwork").fadeOut(); 
 					$("#talkwork").fadeIn(); 
@@ -151,34 +171,15 @@
 		<div id="tabs_container">
 			<h2 class="active tab" id="vrwork_tab">VR work</h2>
 			<h2 id="artwork_tab" class="tab">Art work</h2>
+			<h2 id="workwork_tab" class="tab">Work work</h2>
 			<h2 id="talkwork_tab" class="tab">Talk work</h2>
 		</div>
 	</div>
 
 
 	<div class="body_container">
-<!-- 
-		<div class="work_container product">
-			<div class="thumbnail" style="padding-bottom:55%;">
-				<img class="art" src="product/purple.jpg" />
-				<video data-src="product/Purplec.mp4" autoplay playsinline muted loop></video>
-				<img class="fullscreen" src="images/Fullscreen.svg" />
-			</div>
-			<div class="work_title">Purple (<a href="https://www.purple.pm">www.purple.pm</a>)</div>
-			<div class="work_subtitle">FOUNDER</div>
-		</div>
-
-		<div class="work_container product">
-			<div class="thumbnail" style="padding-bottom:52%;">
-				<img class="art" src="product/uxcheck.png" />
-				<video data-src="product/uxcheckc.mp4" autoplay playsinline muted loop></video>
-				<img class="fullscreen" src="images/Fullscreen.svg" />
-			</div>
-			<div class="work_title">UX Check</div>
-			<div class="work_subtitle">SOLO PROJECT</div>
-		</div>
-	-->
-
+ 
+	
 	<!-- <p class="section_statement"></p> -->
 	<div id="vrwork">
 		<div class="work_container product">
@@ -231,7 +232,7 @@
 				<img class="mute mute_on" src="images/Muted.svg" />
 				<img class="mute mute_off" src="images/Unmuted.svg" />
 			</div>
-			<div class="work_title">Purple VR</div>
+			<div class="work_title">Purple AR/VR</div>
 			<div class="work_subtitle">UNITY + PURPLE API</div>
 		</div>
 
@@ -383,7 +384,7 @@
 				<img class="mute mute_off" src="images/Unmuted.svg" />
 			</div>
 			<div class="work_title">Hearts of Kyber</div>
-			<div class="work_subtitle">BLENDER</div>
+			<div class="work_subtitle">TILTBRUSH</div>
 		</div>
 
 		<div class="work_container art">
@@ -410,11 +411,50 @@
 			<div class="work_subtitle">TILTBRUSH</div>
 		</div>
 	</div>
+	<div id="workwork" style="display: none;">
+		<h3>Design tools</h3>
+		<div class="work_container product">
+			<a href="https://www.purple.pm" target="_blank">
+				<div class="thumbnail" style="padding-bottom:56%;">
+					<img class="art" src="product/purple.jpg" />
+					<video data-src="product/Purplec.mp4" autoplay playsinline muted loop></video>
+					<img class="fullscreen" src="images/Fullscreen.svg" />
+				</div>
+			</a>
+			<div class="work_title">Purple (<a href="https://www.purple.pm" target="_blank">www.purple.pm</a>)</div>
+			<div class="work_subtitle">FOUNDER</div>
+		</div>
+
+		<div class="work_container product">
+			<a href="https://www.uxcheck.co" target="_blank">
+				<div class="thumbnail" style="padding-bottom:56%;">
+					<img class="art" src="product/uxcheck.png" />
+					<video data-src="product/uxcheckc.mp4" autoplay playsinline muted loop></video>
+					<img class="fullscreen" src="images/Fullscreen.svg" />
+				</div>
+			</a>
+			<div class="work_title">UX Check</div>
+			<div class="work_subtitle">SOLO PROJECT</div>
+		</div>
+
+		<h3>Prior work</h3>
+		<div class="talk_container">
+			<p>Product Manager</p>
+			<p>Imgur</p>
+		</div>
+
+		<div class="talk_container" style="margin-bottom:300px;">
+			<p>Program Manager</p>
+			<p>Microsoft</p>
+		</div>
+	</div>
+	
+
 	<div id="talkwork" style="display:none;">
 		<div class="talk_container">
 			<p>ConveyUX Conference 2019</p>
 			<p><a href="https://conveyux.com/speakers/chris-gallello/" target="_blank">Designers, Developers - We're All Creators</a></p>
-			<p>Upcoming - March 11, 2019</p>
+			<p>Upcoming: March 11, 2019</p>
 		</div>
 		<div class="talk_container">
 			<p>Product School Sillicon Valley</p>

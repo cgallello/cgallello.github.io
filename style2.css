@@ -1,6 +1,6 @@
 body{
 	padding:100px 0;
-	font-family:Avenir;
+	font-family:Avenir, Cabin, sans-serif;
 	box-sizing: border-box;
 	margin:0;
 	/*position: relative;*/
@@ -28,6 +28,8 @@ p{
 
 a{
 	text-decoration:none;
+	color:#FF6D05;
+	font-weight:800;
 }
 
 /*
