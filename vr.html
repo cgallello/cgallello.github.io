@@ -1,0 +1,157 @@
+<html>
+<head>
+	<title>Chris Gallello</title>
+<link rel="stylesheet" type="text/css" href="style.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$('.thumbnail').hover(function(){
+			$(this).find('img.art').hide();
+			var video = $(this).find('video');
+			video.fadeIn();
+			if(video.attr("src") == undefined){
+				video.attr("src", video.attr("data-src"));
+			} else {
+				video.get(0).play();
+			}
+		}, function(){
+			$(this).find('img.art').show();
+			var video = $(this).find('video');
+			video.get(0).pause();
+			video.fadeOut();
+		});
+
+		$(".fullscreen").on("click", function(){
+			var video = $(this).siblings('video');
+			video.get(0).webkitRequestFullscreen();
+		});
+
+		$("img.mute_off").on("click", function (e) {
+			$('.mute_on').each(function(){
+				$(this).show();
+			});
+			$('.mute_off').each(function(){
+				$(this).hide();
+			});
+
+			$('video').each(function(){
+				$(this).prop('muted', true);
+			});
+		});
+		$("img.mute_on").on("click", function (e) {
+
+			$('.mute_on').each(function(){
+				$(this).hide();
+			});
+			$('.mute_off').each(function(){
+				$(this).show();
+			});
+			
+			$('video').each(function(){
+				$(this).prop('muted', false);
+			});
+		});
+	});
+
+</script>
+</head>
+<body>
+<div id="topbar">
+	<div id="topbar_inner">
+		<header><h1>Chris Gallello 🐵</h1></header>
+		<div id="topbar_links">
+			<a href="index.html">Home</a>
+		</div>
+	</div>
+</div>
+<!-- <a href="profile.jpg"><div class="profile"></div></a> -->
+
+<div id="main">
+	<h2>Published apps</h2>
+	<!-- <p class="section_statement"></p> -->
+	<div class="work_container product">
+		<div class="thumbnail" style="padding-bottom:56%;">
+			<img class="art" src="vr/kittencannon.jpg" />
+			<video data-src="vr/kittencannon.mp4" autoplay playsinline muted loop></video>
+			<img class="fullscreen" src="images/Fullscreen.svg" />
+			<img class="mute mute_on" src="images/Muted.svg" />
+			<img class="mute mute_off" src="images/Unmuted.svg" />
+		</div>
+		<div class="work_title">Kitten Cannon</div>
+		<div class="work_subtitle">UNITY</div>
+		<p>My friend and I developed this game and <a href="http://kittencannon.party">released it on the Steam Store</a> in October 2016 as part of a self-imposed one-month-long hackathon to build our experience. I worked on the Unity side of things, while my friend worked on the Blender side of things. We were also asked to demo at the annual Product Hunt meetup alongside Casper and Postmates, and brought out to NY to demo at TechCrunch Block Party.</p>
+	</div>
+
+	<div class="work_container product">
+		<div class="thumbnail" style="padding-bottom:56%;">
+			<img class="art" src="vr/pointlesspuppets.jpg" />
+			<video data-src="vr/pointlesspuppetsc.mp4" autoplay playsinline muted loop></video>
+			<img class="fullscreen" src="images/Fullscreen.svg" />
+			<img class="mute mute_on" src="images/Muted.svg" />
+			<img class="mute mute_off" src="images/Unmuted.svg" />
+		</div>
+		<div class="work_title">Pointless Puppets</div>
+		<div class="work_subtitle">UNITY</div>
+		<p>Pointless Puppets lets you play with two puppets, pick up various objects and signs, and record silly GIFs on a beautifully painted puppet show stage. I worked with VR artist, Estella Tse, to develop this light-hearted piece - she painted everything in Tiltbrush, while I stitched her work together in Unity.</p>
+	</div>
+
+
+	<h2>Experiments</h2>
+	<p class="section_statement">Learn by doing, grow by failing.</p>
+
+	<div class="work_container art">
+		<div class="thumbnail">
+			<img class="art" src="vr/purplevr.jpg" />
+			<video data-src="vr/purplevr.mp4" autoplay playsinline muted loop></video>
+			<img class="fullscreen" src="images/Fullscreen.svg" />
+			<img class="mute mute_on" src="images/Muted.svg" />
+			<img class="mute mute_off" src="images/Unmuted.svg" />
+		</div>
+		<div class="work_title">Purple VR</div>
+		<div class="work_subtitle">UNITY + PURPLE API</div>
+	</div>
+
+	<div class="work_container art">
+		<div class="thumbnail">
+			<img class="art" src="vr/breakout.jpg" />
+			<video data-src="vr/breakout.mp4" autoplay playsinline muted loop></video>
+			<img class="fullscreen" src="images/Fullscreen.svg" />
+		</div>
+		<div class="work_title">Breakout</div>
+		<div class="work_subtitle">UNITY + MEDIUM</div>
+	</div>
+
+	<div class="work_container art">
+		<div class="thumbnail">
+			<img class="art" src="vr/donutrain.jpg" />
+			<video data-src="vr/donutrain.mp4" autoplay playsinline muted loop></video>
+			<img class="fullscreen" src="images/Fullscreen.svg" />
+			<img class="mute mute_on" src="images/Muted.svg" />
+			<img class="mute mute_off" src="images/Unmuted.svg" />
+		</div>
+		<div class="work_title">Seahorse Hands</div>
+		<div class="work_subtitle">UNITY + MEDIUM</div>
+	</div>
+
+	<div class="work_container art">
+		<div class="thumbnail">
+			<img class="art" src="vr/blackhole.jpg" />
+			<video data-src="vr/Blackholec.mp4" autoplay playsinline muted loop></video>
+			<img class="fullscreen" src="images/Fullscreen.svg" />
+		</div>
+		<div class="work_title">Black Hole Hands</div>
+		<div class="work_subtitle">UNITY</div>
+	</div>
+
+	<div class="work_container art">
+		<div class="thumbnail">
+			<img class="art" src="vr/ironman.jpg" />
+			<video data-src="vr/ironman.mp4" autoplay playsinline muted loop></video>
+			<img class="fullscreen" src="images/Fullscreen.svg" />
+		</div>
+		<div class="work_title">Ironman flying mechanic, Nauseator</div>
+		<div class="work_subtitle">UNITY</div>
+	</div>
+</div>
+
+</html>

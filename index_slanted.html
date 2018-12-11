@@ -1,0 +1,276 @@
+<html>
+<head>
+	<title>Chris Gallello</title>
+<link rel="stylesheet" type="text/css" href="style.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$('.thumbnail').hover(function(){
+			$(this).find('img.art').hide();
+			var video = $(this).find('video');
+			video.fadeIn();
+			if(video.attr("src") == undefined){
+				video.attr("src", video.attr("data-src"));
+			} else {
+				video.get(0).play();
+			}
+		}, function(){
+			$(this).find('img.art').show();
+			var video = $(this).find('video');
+			video.get(0).pause();
+			video.fadeOut();
+		});
+
+		$(".fullscreen").on("click", function(){
+			var video = $(this).siblings('video');
+			video.get(0).webkitRequestFullscreen();
+		});
+
+		$("img.mute_off").on("click", function (e) {
+			$('.mute_on').each(function(){
+				$(this).show();
+			});
+			$('.mute_off').each(function(){
+				$(this).hide();
+			});
+
+			$('video').each(function(){
+				$(this).prop('muted', true);
+			});
+		});
+		$("img.mute_on").on("click", function (e) {
+
+			$('.mute_on').each(function(){
+				$(this).hide();
+			});
+			$('.mute_off').each(function(){
+				$(this).show();
+			});
+			
+			$('video').each(function(){
+				$(this).prop('muted', false);
+			});
+		});
+	});
+
+</script>
+<link href="https://fonts.googleapis.com/css?family=Montserrat:800,900" rel="stylesheet">
+
+</head>
+<body>
+
+<div id="body_container">
+	<div id="intro">
+		<header>
+			<h1><span>CHRIS</span> GALLELLO</h1>
+			<div id="topbar_links">
+			<a href="product.html"><span>PRODUCT</span></a>
+			<a href=""><span>XR APPS</span></a>
+			<a href=""><span>VR ART</span></a>
+		</header>
+		<div id="summary">
+			<span>I'm a PM, designer, and XR creator, with a keen interest in social/collaboration. </span>
+		</div>
+	</div>
+</div>
+
+
+<div id="topbar">
+	<div id="topbar_inner">
+		<!-- <header><h1>Chris Gallello 🐵</h1></header> -->
+		<div id="topbar_links">
+			<a>Product</a>
+			<a>XR Art</a>
+		</div>
+	</div>
+</div>
+<!-- <a href="profile.jpg"><div class="profile"></div></a> -->
+
+<div id="main">
+	<h2>Product work</h2>
+
+	<div class="work_container product">
+		<div class="thumbnail" style="padding-bottom:55%;">
+			<img class="art" src="product/purple.jpg" />
+			<video data-src="product/Purplec.mp4" autoplay playsinline muted loop></video>
+			<img class="fullscreen" src="images/Fullscreen.svg" />
+			<!-- Loading... -->
+		</div>
+		<div class="work_title">Purple (<a href="https://www.purple.pm">www.purple.pm</a>)</div>
+		<div class="work_subtitle">FOUNDER</div>
+	</div>
+
+	<div class="work_container product">
+		<div class="thumbnail" style="padding-bottom:52%;">
+			<img class="art" src="product/uxcheck.png" />
+			<video data-src="product/uxcheckc.mp4" autoplay playsinline muted loop></video>
+			<img class="fullscreen" src="images/Fullscreen.svg" />
+			<!-- Loading... -->
+		</div>
+		<div class="work_title">UX Check</div>
+		<div class="work_subtitle">SOLO PROJECT</div>
+	</div>
+
+	
+	<h2>VR work</h2>
+
+	<div class="work_container product">
+		<div class="thumbnail" style="padding-bottom:56%;">
+			<img class="art" src="vr/kittencannon.jpg" />
+			<video data-src="vr/kittencannon.mp4" autoplay playsinline muted loop></video>
+			<img class="fullscreen" src="images/Fullscreen.svg" />
+			<img class="mute mute_on" src="images/Muted.svg" />
+			<img class="mute mute_off" src="images/Unmuted.svg" />
+		</div>
+		<div class="work_title">Kitten Cannon</div>
+		<div class="work_subtitle">UNITY</div>
+	</div>
+
+	<div class="work_container product">
+		<div class="thumbnail" style="padding-bottom:56%;">
+			<img class="art" src="vr/pointlesspuppets.jpg" />
+			<video data-src="vr/pointlesspuppetsc.mp4" autoplay playsinline muted loop></video>
+			<img class="fullscreen" src="images/Fullscreen.svg" />
+			<img class="mute mute_on" src="images/Muted.svg" />
+			<img class="mute mute_off" src="images/Unmuted.svg" />
+		</div>
+		<div class="work_title">Pointless Puppets</div>
+		<div class="work_subtitle">UNITY</div>
+	</div>
+
+
+	<h2>Art work</h2>
+
+	<div class="work_container art">
+		<div class="thumbnail">
+			<img class="art" src="art/LeBaiser.jpg" />
+			<video data-src="art/LeBaiser_c.mp4" autoplay playsinline muted loop></video>
+			<img class="fullscreen" src="images/Fullscreen.svg" />
+			<!-- Loading... -->
+		</div>
+		<div class="work_title">Le Baiser</div>
+		<div class="work_subtitle">TILTBRUSH, BLENDER</div>
+	</div>
+
+	<div class="work_container art">
+		<div class="thumbnail">
+			<img class="art" src="art/magrittemashup.jpg" />
+			<video data-src="art/MagritteMashup_c.mp4" autoplay playsinline muted loop></video>
+			<img class="fullscreen" src="images/Fullscreen.svg" />
+			<!-- Loading... -->
+		</div>
+		<div class="work_title">Magritte Mashup</div>
+		<div class="work_subtitle">TILTBRUSH, BLENDER</div>
+	</div>
+
+	<div class="work_container art">
+		<div class="thumbnail">
+			<img class="art" src="art/lemondedesimages.jpg" />
+			<video data-src="art/LeMondeDesImages_c.mp4" autoplay playsinline muted loop></video>
+			<img class="fullscreen" src="images/Fullscreen.svg" />
+		</div>
+		<div class="work_title">Le Monde des Images</div>
+		<div class="work_subtitle">TILTBRUSH, BLENDER</div>
+	</div>
+
+	<div class="work_container art">
+		<div class="thumbnail">
+			<img class="art" src="art/jazzwave.jpg" />
+			<video data-src="art/Jazzwave_c.mp4" autoplay playsinline muted loop></video>
+			<img class="fullscreen" src="images/Fullscreen.svg" />
+			<img class="mute mute_on" src="images/Muted.svg" />
+			<img class="mute mute_off" src="images/Unmuted.svg" />
+		</div>
+		<div class="work_title">Jazzwave</div>
+		<div class="work_subtitle">TILTBRUSH</div>
+	</div>
+
+	<div class="work_container art">
+		<div class="thumbnail">
+			<img class="art" src="art/santacruz.jpg" />
+			<video data-src="art/santacruz.mp4" autoplay playsinline muted loop></video>
+			<img class="fullscreen" src="images/Fullscreen.svg" />
+		</div>
+		<div class="work_title">Santa Cruz</div>
+		<div class="work_subtitle">TILTBRUSH + BLENDER</div>
+	</div>
+
+	<div class="work_container art">
+		<div class="thumbnail">
+			<img class="art" src="art/deathstar.jpg" />
+			<video data-src="art/deathstar.mp4" autoplay playsinline muted loop></video>
+			<img class="fullscreen" src="images/Fullscreen.svg" />
+			<img class="mute mute_on" src="images/Muted.svg" />
+			<img class="mute mute_off" src="images/Unmuted.svg" />
+		</div>
+		<div class="work_title">Death Star II Tunnel run</div>
+		<div class="work_subtitle">BLENDER</div>
+	</div>
+
+	<div class="work_container art">
+		<div class="thumbnail">
+			<img class="art" src="art/deathstar.jpg" />
+			<video data-src="art/heartsofkyber_c.mp4" autoplay playsinline muted loop></video>
+			<img class="fullscreen" src="images/Fullscreen.svg" />
+			<img class="mute mute_on" src="images/Muted.svg" />
+			<img class="mute mute_off" src="images/Unmuted.svg" />
+		</div>
+		<div class="work_title">Hearts of Kyber</div>
+		<div class="work_subtitle">BLENDER</div>
+	</div>
+
+
+
+<!-- 	<div class="work_container">
+		<div class="thumbnail">
+			<img src="art/.jpg" />
+			<video data-src="art/.mp4" autoplay playsinline muted loop></video>
+		</div>
+		<img class="thumbnail" src="art/" />
+		<div class="work_title"></div>
+		<div class="work_subtitle"></div>
+	</div> -->
+
+
+
+
+	<p>Founder at <a href="http://www.purple.li" target="_blank">Purple</a></p>
+	<p>Creator of <a href="http://www.uxcheck.co" target="_blank">UX Check</a></p>
+	<p>PM at Imgur</p>
+	<p>PM at Microsoft</p>
+
+	<h2>VR work</h2>
+	<p><a href="http://www.kittencannon.party" target="_blank">Kitten Cannon VR</a></p>
+	<p><a href="https://cgallello.itch.io/pointless-puppets" target="_blank">Pointless Puppets VR ¯\_(ツ)_/¯</a></p>
+	<p>Girls Who Code - volunteer instructor</p>
+
+	<h2>Talk work</h2>
+	<p>The UX of VR conference - The VR Design Process (<a href="http://cgallello.com/vrresources.html" target="_blank">resources</a>) - 10/3/17</p>
+	<p>EnterVR Podcast - Who belongs in the metaverse? - <a href="https://soundcloud.com/entervr/kittens-cannons-and-unicorns" target="_blank">March 2017</a></p>
+	<p>AR / VR Design SF meetup group - <a href="https://www.facebook.com/groups/arvrdesignsf/" target="_blank">Founded January 2017, ~every other month meetups</a></p>
+	<p>Tradecraft - Finding your voice as a designer - 1/13/17</p>
+	<p>Product School - Shaping teams to build great products - 3/9/16</p>
+	<p>National Federation of the Blind - Train the Trainers conference - Accessibility in Office Online - 10/16/16</p>
+	<p>W3C Web Annotations Workshop - Accessibility of Annotations - <a href="https://www.youtube.com/watch?v=501Et6PpGZ8" target="_blank">4/2/14</a></p>
+
+	<h2>Art work</h2>
+	<p><a href="https://twitter.com/cgallello/status/1031928934336614400" target="_blank">Magritte Mashup - Tiltbrush</a></p>
+	<p><a href="https://twitter.com/cgallello/status/1023422110448775168" target="_blank">Le Monde des Images - Tiltbrush</a></p>
+	<p><a href="https://twitter.com/cgallello/status/1017496163170185216" target="_blank">Le Baiser - Tiltbrush</a></p>
+	<p><a href="https://twitter.com/cgallello/status/1015746273670938624" target="_blank">Le tombeau des lutteurs - Tiltbrush</a></p>
+
+	<p><a href="https://twitter.com/cgallello/status/1059273695305199617" target="_blank">Death Star Run - Blender</a></p>
+	<p><a href="https://twitter.com/cgallello/status/876108192937160704" target="_blank">Yoda - Oculus Medium</a></p>
+	<p><a href="https://twitter.com/cgallello/status/862510204063072256" target="_blank">Hearts of Kyber - Tiltbrush</a></p>
+	<p><a href="https://twitter.com/cgallello/status/858146594452946944" target="_blank">The Sponge Awakens - Tiltbrush</a></p>
+	<!-- <p>My old photography website</p> -->
+
+
+
+	<h2>Let's work</h2>
+	<p><a href="https://www.twitter.com/cgallello" target="_blank">Twiiiitter</a></p>
+	<p><a href="https://www.linkedin.com/in/chrisgallello" target="_blank">Link'tin</a></p>
+	<p>chrisgallello at jeemail dawt calm</p>
+</div>
+
+</html>
