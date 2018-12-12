@@ -12,6 +12,12 @@ body{
 	--skew-rotate: skew(-5deg) rotate(-5deg);
 	--rotate-inverse: rotate(5deg);
 	--skew-inverse: skew(5deg);
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Targets safari on iOS */
+@supports (-webkit-overflow-scrolling: touch) {
+  -webkit-font-smoothing: none;
 }
 
 h1{
@@ -131,7 +137,7 @@ h1{
 
 #tabs_header{
 	font-size:20px;
-	margin-top:30vh;
+	margin-top:50vh;
 	margin-bottom:0px;
 }
 
@@ -365,7 +371,7 @@ video:-webkit-full-screen {
 	}
 }
 
-@media only screen and (max-width: 560px) {
+@media only screen and (max-width: 750px) {
     
 	.work_container.art{
 		width:calc(100% - 60px);
@@ -381,6 +387,14 @@ video:-webkit-full-screen {
 
 	#tabs_container h2{
 		font-size:20px;
+		padding: 15px 10px 10px 0px;
+	}
+}
+
+@media only screen and (max-width: 480px) {
+    
+	#tabs_container h2{
+		font-size:15px;
 		padding: 15px 10px 10px 0px;
 	}
 }
