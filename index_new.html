@@ -56,6 +56,7 @@
 				});
 			});
 
+			firstClick = true;
 			$(".tab").on('click', function(){
 				if($(this).attr("id") == "workwork_tab"){
 					
@@ -101,6 +102,8 @@
 					$("#vrwork").fadeOut(); 
 					$("#artwork").fadeOut(); 
 					$("#talkwork").fadeIn(scrollToTabs()); 
+					firstClick = true;
+					$("#talkwork_tab").click();
 				}
 			});
 
@@ -397,7 +400,7 @@
 			</div>
 			<div class="work_title">Kitten Cannon</div>
 			<div class="work_subtitle">UNITY</div>
-			<p>Fire kittens, at horses, in space. Wow. <a href="http://kittencannon.party">Launched on the Steam Store in October 2016</a> as part of a self-imposed one-month hackathon to build something. Co-creator and I were asked to demo at the annual Product Hunt meetup alongside Casper and Postmates (lolwut), and flown out to NY to demo at TechCrunch Block Party.</p>
+			<p>Fire kittens, at horses, in space. Amaze. <a href="http://kittencannon.party">Launched on the Steam Store in October 2016</a> as part of a self-imposed one-month hackathon to build something. Co-creator and I were asked to demo at the annual Product Hunt meetup alongside Casper and Postmates, and flown out to NY to demo at TechCrunch Block Party.</p>
 		</div>
 
 		<div class="work_container product">
