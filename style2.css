@@ -121,8 +121,13 @@ h1{
 	font-size:30px;
 }
 
-#logos{
+.logos{
 	margin-top:20px;
+}
+
+.logos.footer{
+	text-align: center;
+	margin-bottom:200px;
 }
 
 #path3611{
@@ -415,6 +420,8 @@ video:-webkit-full-screen {
 	width:100%;
 	align-items:center;
 	justify-content: center;
+	margin-left:40px;
+	margin-top:100px;
 }
 
 
