@@ -72,7 +72,6 @@
 				});
 			});
 
-			firstClick = true;
 			$(".tab").on('click', function(){
 				if($(this).attr("id") == "workwork_tab"){
 					
@@ -118,8 +117,6 @@
 					$("#vrwork").fadeOut(); 
 					$("#artwork").fadeOut(); 
 					$("#talkwork").fadeIn(scrollToTabs()); 
-					firstClick = true;
-					$("#talkwork_tab").click();
 				}
 			});
 
