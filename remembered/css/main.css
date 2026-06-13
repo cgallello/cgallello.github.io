@@ -505,7 +505,9 @@ a { color: inherit; }
 .notif:nth-child(2) { transform-origin: center top; }
 
 .notif-icon { border-radius: 9px; flex: none; }
-.notif-text { min-width: 0; flex: 1; }
+/* always left-aligned like a real iOS notification — never inherit the
+   centered text-align that the moment grid applies on mobile */
+.notif-text { min-width: 0; flex: 1; text-align: left; }
 .notif-title {
   font-size: 0.9875rem;
   font-weight: 700;
