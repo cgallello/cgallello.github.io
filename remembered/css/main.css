@@ -34,6 +34,11 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  /* clip wide decorative bleed (e.g. the .hook glow) at the scroll root.
+     overflow-x:hidden on body alone doesn't contain it — html is the scroll
+     container. clip (not hidden) avoids creating a scroll container, so
+     vertical scroll, smooth-scroll, and fixed/sticky are unaffected. */
+  overflow-x: clip;
 }
 
 body {
