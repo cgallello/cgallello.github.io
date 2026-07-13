@@ -137,7 +137,7 @@
   const CAST = [
     { name: "Alex Morgan", off: 2 },
     { name: "Jordan Lee", off: 5 },
-    { name: "Wedding Anniversary", off: 8 },
+    { name: "Taylor Reed", off: 8 },
     { name: "Sam Chen", off: 8 },
     { name: "Riley Johnson", off: 12 },
     { name: "Casey Davis", off: 18 },
@@ -199,11 +199,8 @@
     const medium = document.querySelector("[data-widget-medium]");
     if (!small || !medium) return;
 
-    // Small: a fitted stack of the nearest three, then the agate tail line.
-    const agate = items.slice(3, 6).map((it) => `${firstName(it.name)} ${it.days}`).join(" · ");
-    small.innerHTML =
-      items.slice(0, 3).map((it, r) => crow(it, r, TIER.small, true)).join("") +
-      `<p class="crow-agate">${agate}</p>`;
+    // Small: a fitted stack of the nearest three.
+    small.innerHTML = items.slice(0, 3).map((it, r) => crow(it, r, TIER.small, true)).join("");
 
     // Medium: greedy column flow like ColumnCascade — fill the left column at
     // each name's proximity size, spill the rest into the right.
