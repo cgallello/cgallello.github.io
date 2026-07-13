@@ -130,19 +130,25 @@
   }
 
   /* ------------------------------------------------------- live widgets */
-  // Recurring demo dates (month is 1-based). Countdown is computed from the
-  // real current date, so the widgets genuinely tick.
-  const PEOPLE = [
-    { emoji: "🎂", name: "Mom", m: 3, d: 15 },
-    { emoji: "🎂", name: "Alex Morgan", m: 6, d: 14 },
-    { emoji: "🎂", name: "Jordan Lee", m: 8, d: 29 },
-    { emoji: "💍", name: "Wedding Anniversary", m: 10, d: 9 },
-    { emoji: "🎂", name: "Sam Chen", m: 12, d: 2 },
-    { emoji: "🎂", name: "Riley Johnson", m: 1, d: 11 },
-    { emoji: "🎂", name: "Casey Davis", m: 2, d: 21 },
-    { emoji: "🎂", name: "Avery Martinez", m: 4, d: 30 },
+  // Demo cast (the same one the App Store shots use). Each person's recurring
+  // date is anchored relative to page-load day so the cascade always shows its
+  // proximity ramp; countdowns are then computed live from the real date, so
+  // they genuinely tick over midnight.
+  const CAST = [
+    { name: "Alex Morgan", off: 2 },
+    { name: "Jordan Lee", off: 5 },
+    { name: "Wedding Anniversary", off: 8 },
+    { name: "Sam Chen", off: 8 },
+    { name: "Riley Johnson", off: 12 },
+    { name: "Casey Davis", off: 18 },
+    { name: "Morgan Kim", off: 25 },
+    { name: "Avery Martinez", off: 32 },
   ];
-  const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const loadDay = new Date();
+  const PEOPLE = CAST.map((p) => {
+    const dt = new Date(loadDay.getFullYear(), loadDay.getMonth(), loadDay.getDate() + p.off);
+    return { name: p.name, m: dt.getMonth() + 1, d: dt.getDate() };
+  });
 
   const upcoming = () => {
     const now = new Date();
@@ -151,11 +157,41 @@
       let next = new Date(today.getFullYear(), p.m - 1, p.d);
       if (next < today) next = new Date(today.getFullYear() + 1, p.m - 1, p.d);
       const days = Math.round((next - today) / 86400000);
-      return { ...p, days, label: `${MONTHS[p.m - 1]} ${p.d}` };
+      return { ...p, days };
     }).sort((a, b) => a.days - b.days);
   };
 
-  const cd = (days) => (days === 0 ? "Today" : `${days}d`);
+  // The cascade, ported from the shipping widget (WidgetPortraitKit.swift):
+  // the nearest name IS the countdown — type size falls off with distance,
+  // depth color recedes with rank, day numerals go gold inside a week.
+  const TIER = { small: { max: 29, mid: 12, min: 11 }, medium: { max: 31, mid: 12.5, min: 11.5 } };
+  const rawSize = (days, t) =>
+    days <= 3 ? t.max : days <= 7 ? t.max * 0.66 : days <= 30 ? t.max * 0.44 : days <= 60 ? t.mid : t.min;
+  const weight = (days) => (days <= 3 ? 800 : days <= 30 ? 700 : 600);
+  const DEPTH = [
+    "var(--text-1)",
+    "rgba(242, 237, 230, 0.94)",
+    "rgba(217, 212, 201, 0.92)",
+    "rgba(189, 184, 173, 0.9)",
+    "rgba(184, 179, 168, 0.85)",
+  ];
+  const depth = (rank) => DEPTH[Math.min(rank, DEPTH.length - 1)];
+  const firstName = (name) => name.split(" ")[0];
+
+  const numeral = (days) =>
+    days === 0
+      ? `<span class="crow-days crow-days--today">Today</span>`
+      : `<span class="crow-days${days <= 7 ? " crow-days--near" : ""}">${days}<i>d</i></span>`;
+
+  const crow = (it, rank, t, narrow) => {
+    const size = rawSize(it.days, t);
+    // Like FittedName: big ramp rows fit the first name; small rows keep the
+    // full title unless the column is too narrow for it.
+    const label = size > t.max * 0.5 || (narrow && it.name.length > 14) ? firstName(it.name) : it.name;
+    return `<div class="crow" style="font-size:${size}px">` +
+      `<span class="crow-name" style="font-weight:${weight(it.days)};color:${depth(rank)}">${label}</span>` +
+      numeral(it.days) + `</div>`;
+  };
 
   const renderWidgets = () => {
     const items = upcoming();
@@ -163,23 +199,30 @@
     const medium = document.querySelector("[data-widget-medium]");
     if (!small || !medium) return;
 
-    const row = (it, mini) => `
-      <div class="wrow">
-        <span class="wrow-emoji" aria-hidden="true">${it.emoji}</span>
-        <div class="wrow-text">
-          <p class="wrow-name">${it.name}</p>
-          <p class="wrow-meta">${mini ? `<b>${cd(it.days)}</b>` : `<span>${it.label}</span><b>${cd(it.days)}</b>`}</p>
-        </div>
-      </div>`;
-
+    // Small: a fitted stack of the nearest three, then the agate tail line.
+    const agate = items.slice(3, 6).map((it) => `${firstName(it.name)} ${it.days}`).join(" · ");
     small.innerHTML =
-      items.slice(0, 3).map((it) => row(it, true)).join("") +
-      `<span class="widget-plus" aria-hidden="true">+</span>`;
+      items.slice(0, 3).map((it, r) => crow(it, r, TIER.small, true)).join("") +
+      `<p class="crow-agate">${agate}</p>`;
 
+    // Medium: greedy column flow like ColumnCascade — fill the left column at
+    // each name's proximity size, spill the rest into the right.
+    const H = 146; // usable height inside the 176px card
+    const cols = [[], []];
+    let used = 0, col = 0;
+    for (let i = 0; i < items.length && col < 2; i++) {
+      const rowH = rawSize(items[i].days, TIER.medium) * 1.18 + (cols[col].length ? 6 : 0);
+      if (used + rowH > H && cols[col].length) {
+        col++; used = 0;
+        if (col >= 2) break;
+      }
+      cols[col].push(crow(items[i], i, TIER.medium));
+      used += rowH;
+    }
     medium.innerHTML =
-      `<div class="widget-col">${items.slice(0, 3).map((it) => row(it, false)).join("")}</div>` +
-      `<div class="widget-col">${items.slice(3, 6).map((it) => row(it, false)).join("")}</div>` +
-      `<span class="widget-plus" aria-hidden="true">+</span>`;
+      `<div class="widget-col">${cols[0].join("")}</div>` +
+      `<div class="widget-divider" aria-hidden="true"></div>` +
+      `<div class="widget-col">${cols[1].join("")}</div>`;
   };
 
   renderWidgets();
